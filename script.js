@@ -58,7 +58,7 @@ function getSpecial() {
   } else if (hasSpecial === "no") {
     hasRealSpecial= false;
   } else {
-    hasRealSpecial = getLower();
+    hasRealSpecial = getSpecial();
   }
   return hasRealSpecial;
 }
