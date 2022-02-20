@@ -70,17 +70,23 @@ function generatePassword() {
   var LowerOrNot = getLower();
   var NumericOrNot = getNumeric();
   var SpecialOrNot = getSpecial();
-  console.log(UpperOrNot)
-  console.log(LowerOrNot)
-  console.log(NumericOrNot)
-  console.log(SpecialOrNot)
-  var characterSet = ''
-  // create a set of all types of of characters (eg 1-26 upper, 27-52 lower, ...)
-  // for each index range select a number in it. for loop
-  // n conditions (n, yes or nos)
-  // random function to select n-1 random number, the nth is decided by length - (number1+number2+..number(n-1))
-  // 
+  // List out all the possible sets and all the unions of the sets as strings
+  var upperSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var lowerSet = "abcdefghijklmnopqrstuvwxyz";
+  var numericSet = "0123456789";
+  var specialSet = "~!@#$%^&*()_+-=[]\{}|;:'\",./<>?"; // added an escape signal for the quote mark
+  var unionUL = upperSet.concat(lowerSet);
+  var unionUN = upperSet.concat(numericSet);
+  var unionUS = upperSet.concat(specialSet);
+  var unionLN = lowerSet.concat(numericSet);
+  var unionLS = lowerSet.concat(specialSet);
+  var unionNS = numericSet.concat(specialSet);
+  var unionULN = upperSet.concat(lowerSet,numericSet);
+  var unionUNS = upperSet.concat(numericSet,specialSet);
+  var unionULS = upperSet.concat(lowerSet,specialSet);
+  var unionLNS = lowerSet.concat(numericSet,specialSet);
   
+  // for each possible conditions that are in the 
 
   // random ordering function
   // sorting
