@@ -63,6 +63,8 @@ function getSpecial() {
   return hasRealSpecial;
 }
 // Create a randomize and shuffle function to shuffle whatever string we got from the password
+// random ordering function
+// sorting
 String.prototype.shuffle = function () {
   var a = this.split(""),
       n = a.length;
@@ -74,6 +76,15 @@ String.prototype.shuffle = function () {
       a[j] = tmp;
   }
   return a.join("");
+}
+// Create a function to get a random characters (with length = length) from a string
+function getRandomString(length,setASet) {
+  var randomChars = setASet;
+  var result = '';
+  for ( var i = 0; i < length; i++ ) {
+    result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
+  }
+  return result;
 }
 
 function generatePassword() {
@@ -102,14 +113,13 @@ function generatePassword() {
   // for each possible conditions, we create a string for it by two steps
   // first, select one from each category that the user said yes for
   // second, select all other remaining characters from the union sets of all the category that the user said yes for
-  // if the user only say yes to one category, then we select all the possible characters from the category he wants
+  // if the user only say yes to one category or yes for all categories, then we select all the possible characters from the category he wants
   // fourth, randomize the string
-  // Case 1-4: yes for only one category
+  // Case 1-4 & Case 15: yes for only one category, or yes for all categories
   if 
 
 
-  // random ordering function
-  // sorting
+
   //
   if ( UpperOrNot=== false && LowerOrNot === false && NumericOrNot == false && SpecialOrNot === false) {
     return 'There is no such password. Refresh the page and change your input'
