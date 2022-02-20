@@ -62,6 +62,19 @@ function getSpecial() {
   }
   return hasRealSpecial;
 }
+// Create a randomize and shuffle function to shuffle whatever string we got from the password
+String.prototype.shuffle = function () {
+  var a = this.split(""),
+      n = a.length;
+
+  for(var i = n - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = a[i];
+      a[i] = a[j];
+      a[j] = tmp;
+  }
+  return a.join("");
+}
 
 function generatePassword() {
   var password = ''
@@ -86,7 +99,14 @@ function generatePassword() {
   var unionULS = upperSet.concat(lowerSet,specialSet);
   var unionLNS = lowerSet.concat(numericSet,specialSet);
   
-  // for each possible conditions that are in the 
+  // for each possible conditions, we create a string for it by two steps
+  // first, select one from each category that the user said yes for
+  // second, select all other remaining characters from the union sets of all the category that the user said yes for
+  // if the user only say yes to one category, then we select all the possible characters from the category he wants
+  // fourth, randomize the string
+  // Case 1-4: yes for only one category
+  if 
+
 
   // random ordering function
   // sorting
