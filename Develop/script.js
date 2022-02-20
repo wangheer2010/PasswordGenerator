@@ -88,7 +88,8 @@ function getRandomString(length,setASet) {
 }
 
 function generatePassword() {
-  var password = ''
+  var password = '';
+  var temp = '';
   var passwordLength = getLength();
   var UpperOrNot = getUpper(); 
   var LowerOrNot = getLower();
@@ -109,23 +110,100 @@ function generatePassword() {
   var unionUNS = upperSet.concat(numericSet,specialSet);
   var unionULS = upperSet.concat(lowerSet,specialSet);
   var unionLNS = lowerSet.concat(numericSet,specialSet);
+  var unionALL = upperSet.concat(lowerSet,numericSet,specialSet);
   
   // for each possible conditions, we create a string for it by two steps
   // first, select one from each category that the user said yes for
   // second, select all other remaining characters from the union sets of all the category that the user said yes for
-  // if the user only say yes to one category or yes for all categories, then we select all the possible characters from the category he wants
-  // fourth, randomize the string
-  // Case 1-4 & Case 15: yes for only one category, or yes for all categories
-  if 
-
-
-
-  //
-  if ( UpperOrNot=== false && LowerOrNot === false && NumericOrNot == false && SpecialOrNot === false) {
-    return 'There is no such password. Refresh the page and change your input'
-  }
-  else {
+  // Case 1: yes for all categories
+  if (UpperOrNot && LowerOrNot && NumericOrNot && SpecialOrNot) {
+    temp = getRandomString(1,upperSet).concat(getRandomString(1,lowerSet),getRandomString(1,numericSet),getRandomString(1,specialSet),getRandomString(passwordLength-4,unionALL));
+    password = temp.shuffle()
     return password
+  }
+  // Case 2: No for Special
+  else if (UpperOrNot && LowerOrNot && NumericOrNot) {
+    temp = getRandomString(1,upperSet).concat(getRandomString(1,lowerSet),getRandomString(1,numericSet),getRandomString(passwordLength-3,unionULN));
+    password = temp.shuffle()
+    return password
+  }
+  // Case 3: No for Upper
+  else if (LowerOrNot && NumericOrNot && SpecialOrNot) {
+    temp = getRandomString(1,specialSet).concat(getRandomString(1,lowerSet),getRandomString(1,numericSet),getRandomString(passwordLength-3,unionLNS));
+    password = temp.shuffle()
+    return password
+  }
+  // Case 4: No for Lower
+  else if (UpperOrNot && NumericOrNot && SpecialOrNot) {
+    temp = getRandomString(1,upperSet).concat(getRandomString(1,numericSet),getRandomString(1,specialSet),getRandomString(passwordLength-3,unionUNS));
+    password = temp.shuffle()
+    return password
+  }
+  // Case 5: No for Numeric
+  else if (UpperOrNot && LowerOrNot && SpecialOrNot) {
+    temp = getRandomString(1,upperSet).concat(getRandomString(1,lowerSet),getRandomString(1,specialSet),getRandomString(passwordLength-3,unionULS));
+    password = temp.shuffle()
+    return password
+  }
+  // Case 6: Yes for only UL
+  else if (UpperOrNot && LowerOrNot) {
+    temp = getRandomString(1,upperSet).concat(getRandomString(1,lowerSet),getRandomString(passwordLength-2,unionUL))
+    password = temp.shuffle()
+    return password
+  }
+  // Case 7: Yes for only UN
+  else if (UpperOrNot && NumericOrNot) {
+    temp = getRandomString(1,upperSet).concat(getRandomString(1,numericSet),getRandomString(passwordLength-2,unionUN))
+    password = temp.shuffle()
+    return password
+  }
+  // Case 8: Yes for only US
+  else if (UpperOrNot && SpecialOrNot) {
+    temp = getRandomString(1,upperSet).concat(getRandomString(1,specialSet),getRandomString(passwordLength-2,unionUS))
+    password = temp.shuffle()
+    return password
+  }
+  // Case 9: Yes for only LN
+  else if (NumericOrNot && LowerOrNot) {
+    temp = getRandomString(1,numericSet).concat(getRandomString(1,lowerSet),getRandomString(passwordLength-2,unionLN))
+    password = temp.shuffle()
+    return password
+  }
+  // Case 10: Yes for only LS
+  else if (SpecialOrNot && LowerOrNot) {
+    temp = getRandomString(1,specialSet).concat(getRandomString(1,lowerSet),getRandomString(passwordLength-2,unionLS))
+    password = temp.shuffle()
+    return password
+  }
+  // Case 11: Yes for only NS
+  else if (NumericOrNot && SpecialOrNot) {
+    temp = getRandomString(1,numericSet).concat(getRandomString(1,specialSet),getRandomString(passwordLength-2,unionNS))
+    password = temp.shuffle()
+    return password
+  }
+  // Case 12 - 15 yes for only one category
+  else if (UpperOrNot) {
+    password = getRandomString(passwordLength,upperSet)
+    return password
+  }
+  else if (LowerOrNot) {
+    password = getRandomString(passwordLength,lowerSet)
+    return password
+  }
+  else if (NumericOrNot) {
+    password = getRandomString(passwordLength,numericSet)
+    return password
+  }
+  else if (SpecialOrNot) {
+    password = getRandomString(passwordLength,specialSet) 
+    return password
+  }
+
+// In the end, we decide on what to return
+// For all the cases above, we return password 
+// but if someone is mad, saying no to everything, we should be able to capture it, ask him to refresh and change his input
+  else if ( UpperOrNot=== false && LowerOrNot === false && NumericOrNot == false && SpecialOrNot === false) {
+    return 'There is no such password. Click on the button and change your input'
   }
   
 }

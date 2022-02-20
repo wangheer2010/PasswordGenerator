@@ -28,4 +28,4 @@ Create a function so that all prompts are answered a password is generated that 
 
 ### Step 6
 
-Create a function so that the password is generated and the password is either displayed in an alert or written to the page
+Create a function so that the password is generated and the password is displayed on the page
