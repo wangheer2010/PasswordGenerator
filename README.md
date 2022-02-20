@@ -16,7 +16,7 @@ Create the prompt for the length of the password. Users can choose a length of a
 
 ### Step 3
 
-Create prompts for character types to include in the password, including lowercase, uppercase, numeric, and/or special characters. We create the prompts separately asking for yes or no
+Create prompts for character types to include in the password, including lowercase, uppercase, numeric, and/or special characters. We create the prompts separately asking for yes or no and the value is set to be a boolean
 
 ### Step 4
 
@@ -28,5 +28,4 @@ Create a function so that all prompts are answered a password is generated that 
 
 ### Step 6
 
- password is generated
-THEN the password is either displayed in an alert or written to the page
+Create a function so that the password is generated and the password is either displayed in an alert or written to the page

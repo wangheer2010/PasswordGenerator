@@ -12,7 +12,7 @@ function getLength() {
 }
 
 function getUpper() {
-  let hasUpperCase = prompt("Do you want Uppercase letter in your password? Please enter yes or no (in lower case)");
+  let hasUpperCase = prompt("Do you want Uppercase letters in your password? Please enter yes or no (in lower case)");
   let hasRealUpperCase = false; // Set a base value for a variable
   if (hasUpperCase === "yes") {
     hasRealUpperCase= true;
@@ -25,10 +25,10 @@ function getUpper() {
 }
 
 function getLower() {
-  let hasLowerCase = prompt("Do you want Lowercase letter in your password? Please enter yes or no (in lower case)");
+  let hasLowerCase = prompt("Do you want Lowercase letters in your password? Please enter yes or no (in lower case)");
   let hasRealLowerCase = false; // Set a base value for a variable
   if (hasLowerCase === "yes") {
-    hasLowerLowerCase= true;
+    hasRealLowerCase= true;
   } else if (hasLowerCase === "no") {
     hasRealLowerCase= false;
   } else {
@@ -37,13 +37,44 @@ function getLower() {
   return hasRealLowerCase;
 }
 
+function getNumeric() {
+  let hasNumeric = prompt("Do you want Numeric characters in your password? Please enter yes or no (in lower case)");
+  let hasRealNumeric = false; // Set a base value for a variable
+  if (hasNumeric === "yes") {
+    hasRealNumeric= true;
+  } else if (hasNumeric === "no") {
+    hasRealNumeric= false;
+  } else {
+    hasRealNumeric = getNumeric();
+  }
+  return hasRealNumeric;
+}
+
+function getSpecial() {
+  let hasSpecial = prompt("Do you want Special characters in your password? Please enter yes or no (in lower case)");
+  let hasRealSpecial = false; // Set a base value for a variable
+  if (hasSpecial === "yes") {
+    hasRealSpecial= true;
+  } else if (hasSpecial === "no") {
+    hasRealSpecial= false;
+  } else {
+    hasRealSpecial = getLower();
+  }
+  return hasRealSpecial;
+}
 
 function generatePassword() {
   var password = ''
   var passwordLength = getLength();
   var UpperOrNot = getUpper(); 
   var LowerOrNot = getLower();
+  var NumericOrNot = getNumeric();
+  var SpecialOrNot = getSpecial();
   console.log(UpperOrNot)
+  console.log(LowerOrNot)
+  console.log(NumericOrNot)
+  console.log(SpecialOrNot)
+  var characterSet = ''
   // create a set of all types of of characters (eg 1-26 upper, 27-52 lower, ...)
   // for each index range select a number in it. for loop
   // n conditions (n, yes or nos)
@@ -53,7 +84,14 @@ function generatePassword() {
 
   // random ordering function
   // sorting
-  return password
+  //
+  if ( UpperOrNot=== false && LowerOrNot === false && NumericOrNot == false && SpecialOrNot === false) {
+    return 'There is no such password. Refresh the page and change your input'
+  }
+  else {
+    return password
+  }
+  
 }
 
 // Get references to the #generate element
