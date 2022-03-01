@@ -29,3 +29,11 @@ Create a function so that all prompts are answered a password is generated that 
 ### Step 6
 
 Create a function so that the password is generated and the password is displayed on the page
+
+# Link to the application
+
+The application is deployed [here](https://wangheer2010.github.io/PasswordGenerator/)
+
+# Screenshot of the application
+
+![screenshot](screencapture-wangheer2010-github-io-PasswordGenerator-2022-03-01-18_50_40.png)
